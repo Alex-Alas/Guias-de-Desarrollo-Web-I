@@ -1,0 +1,191 @@
+/* --- ESTILOS GLOBALES Y RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    /* CAMBIO: Color de fondo oscuro */
+    background-color: #121212;
+    /* CAMBIO: Color de texto claro */
+    color: #e0e0e0;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+/* --- ENCABEZADO --- */
+header {
+    /* CAMBIO: Fondo del encabezado más oscuro */
+    background-color: #1e1e1e;
+    padding: 30px 0;
+    text-align: center;
+    /* CAMBIO: Borde inferior más claro para contraste */
+    border-bottom: 1px solid #333333;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    /* CAMBIO: El color verde se mantiene, pero se aclara para contraste */
+    color: #729f89;
+}
+
+.subtitulo {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    /* CAMBIO: Gris claro para el subtítulo */
+    color: #b0b0b0;
+    font-weight: lighter;
+}
+
+/* --- NAVEGACIÓN --- */
+nav {
+    /* CAMBIO: Se mantiene el verde oscuro, pero uno más profundo */
+    background-color: #729f89;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a {
+    /* CAMBIO: El texto se mantiene blanco, sigue funcionando bien */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* CAMBIO: Se ajustó el hover a un verde que funciona mejor con el fondo oscuro */
+nav a:hover {
+    color: #c9e4c5;
+}
+
+/* --- CONTENIDO PRINCIPAL Y SECCIONES --- */
+main {
+    /* CAMBIO: Fondo principal más oscuro */
+    background-color: #1e1e1e;
+    padding: 40px 0;
+}
+
+section {
+    margin-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    /* CAMBIO: Borde inferior más claro */
+    border-bottom: 1px solid #333333;
+}
+
+.container section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 1.8rem;
+    /* CAMBIO: El verde se mantiene, pero se aclara para contraste */
+    color: #729f89;
+    text-decoration: underline;
+    margin-top: 0;
+    display: inline-block;
+}
+
+/* --- ELEMENTOS ESPECÍFICOS --- */
+img.yo-img {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    /* CAMBIO: El borde de la imagen se hace más oscuro */
+    border: 3px solid #333333;
+}
+
+img.yo-img[alt*="chiquito"] {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+    margin-top: 45px;
+}
+
+#gato {
+    width: 5rem;
+    height: 5rem;
+    float: left;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+#quien-soy ul {
+    /* Conservado: margen comentado, es correcto */
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+strong {
+    /* CAMBIO: Color de texto de las etiquetas strong para contraste */
+    color: #ffffff;
+}
+
+a {
+    /* CAMBIO: Color del enlace más claro para un buen contraste */
+    color: #729f89;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.agradecimiento{
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* --- PIE DE PÁGINA --- */
+footer {
+    /* CAMBIO: Fondo del pie de página más oscuro */
+    background-color: #729f89;
+    /* CAMBIO: Texto del pie de página más claro */
+    color: #f0f0f0;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

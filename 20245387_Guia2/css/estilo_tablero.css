@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*h1 {*/
+/*    margin: 0;*/
+/*    padding: 10px;*/
+/*}*/
+
+body {
+    background-color: steelblue;
+    color: #eee;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#tablero {
+    background-color: white;
+    /*border: 10px solid #333;*/
+    height: 400px;
+    width: 400px;
+    margin: auto;
+}
+
+/* Estilo de las celdas/párrafos (Paso 9) */
+#tablero p {
+    background-color: black;
+    color: white;
+    float: left;
+    font-size: 36px;
+    height: 50px;
+    width: 50px;
+    vertical-align: center;
+}
+
+#tablero .filaImpar p:nth-child(2n+1) {
+    background-color: white;
+}
+
+/* Estilo para celdas pares en filas pares (Paso 11) */
+#tablero .filaPar p:nth-child(2n) {
+    background-color: white;
+}
