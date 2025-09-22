@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Muli);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    text-align: justify;
+    padding-top: 130px;
+    padding-bottom: 50px;
+}
+
+header {
+    background: #16A085;
+    height: 130px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+footer {
+    background: #16A085;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+header div, footer div {
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+section {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section article {
+    font-size: 0.9rem;
+    height: 340px;
+    width: 30%;
+    margin: 1%;
+    border: 2px dashed #16A085;
+    padding: 1%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+section article img {
+    height: 180px;
+    max-width: 80%;
+    display: block;
+    margin: 5px auto;
+}
+
+section article h3 {
+    text-align: center;
+}
+
+footer div {
+    padding-top: 1rem;
+}
+
+/*Posicionamiento relativo*/
+/*section article:nth-child(2) {*/
+/*    background-color: rgba(70, 130, 180, 0.9);*/
+/*    position: relative; !*Hace que el objeto se mueva visualmente, conservando el espacio original que usa*!*/
+/*    left: 100px; !*Se mueve 100 px DESDE la izquierda hacia la derecha*!*/
+/*    top: 50px; !*Se mueve 50px DESDE arriba hacia abajo*!*/
+/*}*/
+
+/*Posicionamiento Absoluto*/
+/*section article:nth-child(2) {*/
+/*    position: absolute;*/
+/*    background-color: rgba(70, 130, 180, 0.9);*/
+/*    left: 100px;*/
+/*    top: 50px;*/
+/*    !*Mueve al objeto desde el origen 50px hacia abajo y 100px hacia la derecha*!*/
+/*}*/
+
+/*section {*/
+/*    position: relative;*/
+/*    !*Cambia el punto de referencia del movimiento a su posición original*!*/
+/*}*/
+/*Despues de esto, las cajas han rellenado el espacio vació de la caja desplazada*/
+
+/*
+Conclusiones:
+    - Posicionamiento relativo: hace que el objeto se mueva respecto a su
+    punto de origen. Sin embargo, el espacio original es conservado y no
+    puede ser tomado por las cajas en el entorno.
+    - Posicionamiento absoluto: hace que el espacio de origen del objeto
+    se desplace tomando cómo referencia al objeto más próximo del que hereda
+    que tenga posición distinta al predeterminado (relative, absolute).
+    Debido a esto, otras cajas y elementos pueden tomar su lugar cuándo el
+    objeto movido se aleja de su posición original.
+*/
+
+/*Posicionamiento estático*/
+section article:nth-child(2) {
+    position: static;
+    background-color: rgba(70, 130, 180, 0.9);
+    left: 100px;
+    top: 50px;
+    /*Convierte al objeto en un elemento no posicionado*/
+}
+
+/*Ocultando Elementos*/
+/*section article:nth-child(2) {*/
+/*    visibility: hidden;*/
+/*}*/
+
+/*Eliminando el espacio del elemento*/
+section article:nth-child(2) {
+    display: none;
+}
+
+/*
+Conclusiones:
+    - display:none => elimina el espacio del elemento por completo, lo que
+    permite que el resto de elementos puedan ocupar el espacio vacío.
+    - visibility:hidden => oculta el elemento, pero deja el espacio original
+    para que ningún objeto pueda ocupar su lugar.
+*/
