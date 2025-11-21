@@ -5,6 +5,7 @@ const newForm = document.getElementById("idNewForm")
 // ACCEDIENDO A LA REFERENCIA DE BOTONES
 const buttonCrear = document.getElementById("idBtnCrear")
 const buttonAddElemento = document.getElementById("idBtnAddElement")
+const buttonValidar = document.getElementById("idBtnValidar")
 
 // ACCEDIENDO AL VALOR SELECT PARA DETERMINAR EL TIPO DE ELEMENTO A CREAR
 const cmbElemento = document.getElementById("idCmbElemento")
@@ -29,7 +30,23 @@ const verificartipoElemento = function () {
 	}
 }
 
+// FUNCIÓN PARA VALIDAR QUE EL ID NO SE REPITA
+const validarIdUnico = function(idNuevo) {
+	// Verificar si ya existe un elemento con ese ID en el nuevo formulario
+	const elementoExistente = document.getElementById(`id${idNuevo}`);
+	if (elementoExistente) {
+		alert(`⚠️ ERROR: Ya existe un control con el ID "${idNuevo}".\nPor favor, elija un ID diferente.`);
+		return false;
+	}
+	return true;
+}
+
 const newSelect = function () {
+	// Validar que el ID no se repita
+	if (!validarIdUnico(nombreElemento.value)) {
+		return; // Salir si el ID ya existe
+	}
+
 	// Creando elementos
 	let addElemento = document.createElement("select")
 
@@ -53,7 +70,7 @@ const newSelect = function () {
 
 	// Creando label de id
 	let labelId = document.createElement("span")
-	labelId.textContent = `ID de control : ${nombreElemento.id}`
+	labelId.textContent = `ID de control : ${nombreElemento.value}`
 
 	// Creando plantilla de bootstrap para visualizar el nuevo elemento
 	let divElemento = document.createElement("div")
@@ -70,9 +87,16 @@ const newSelect = function () {
 
 	// Creando el Div que será hijo dle nuevo formulario
 	newForm.appendChild(divElemento);
+
+	// Cerrar el modal después de agregar exitosamente
+	modal.hide();
 }
 
 const newRadioCheckbox = function (newElemento) {
+	// Validar que el ID no se repita
+	if (!validarIdUnico(nombreElemento.value)) {
+		return; // Salir si el ID ya existe
+	}
 
 	// Creando elementos
 	let addElemento = document.createElement("input");
@@ -109,9 +133,17 @@ const newRadioCheckbox = function (newElemento) {
 
 	// Creando el Div que será hijo del nuevo Formulario
 	newForm.appendChild(divElemento);
+
+	// Cerrar el modal después de agregar exitosamente
+	modal.hide();
 };
 
 const newInput = function (newElemento) {
+	// Validar que el ID no se repita
+	if (!validarIdUnico(nombreElemento.value)) {
+		return; // Salir si el ID ya existe
+	}
+
 	// Creando elementos de tipo = text, number, date y password
 	let addElemento =
 		newElemento == "textarea"
@@ -159,6 +191,9 @@ const newInput = function (newElemento) {
 
 	// Creando el Div que sera hijo del nuevo Formulario
 	newForm.appendChild(divElemento);
+
+	// Cerrar el modal después de agregar exitosamente
+	modal.hide();
 };
 
 
@@ -191,6 +226,64 @@ document.getElementById("idModal").addEventListener("show.bs.modal", () => {
 	// Inicializando puntero en el campo del título para el control
 	tituloElemento.focus()
 })
+
+// FUNCIÓN PARA VALIDAR EL FORMULARIO DINÁMICO
+const validarFormulario = function() {
+	// Obtener todos los elementos del formulario dinámico
+	const elementos = newForm.querySelectorAll('input, select, textarea');
+	
+	if (elementos.length === 0) {
+		alert("⚠️ No hay elementos en el formulario para validar.");
+		return;
+	}
+
+	let errores = [];
+	let elementosValidos = 0;
+
+	elementos.forEach((elemento) => {
+		const tipo = elemento.type;
+		const id = elemento.id;
+		const valor = elemento.value.trim();
+
+		// Validar según el tipo de elemento
+		if (tipo === 'radio' || tipo === 'checkbox') {
+			// Para radio y checkbox, verificar si está seleccionado
+			if (!elemento.checked) {
+				errores.push(`⚠️ El control "${id}" no está seleccionado.`);
+			} else {
+				elementosValidos++;
+			}
+		} else if (tipo === 'select-one') {
+			// Para select, verificar que se haya seleccionado una opción
+			if (valor === "") {
+				errores.push(`⚠️ El control "${id}" no tiene una opción seleccionada.`);
+			} else {
+				elementosValidos++;
+			}
+		} else {
+			// Para text, number, date, password, email, color, textarea
+			if (valor === "") {
+				errores.push(`⚠️ El control "${id}" está vacío.`);
+			} else {
+				elementosValidos++;
+			}
+		}
+	});
+
+	// Mostrar resultado de la validación
+	if (errores.length === 0) {
+		alert(`✅ ¡Validación exitosa!\n\nTodos los ${elementosValidos} controles están completos y válidos.`);
+	} else {
+		let mensaje = `❌ Validación fallida\n\nElementos válidos: ${elementosValidos}/${elementos.length}\n\nErrores encontrados:\n\n`;
+		mensaje += errores.join("\n");
+		alert(mensaje);
+	}
+}
+
+// AGREGANDO EVENTO CLIC AL BOTÓN DE VALIDAR
+buttonValidar.onclick = () => {
+	validarFormulario();
+}
 
 
 
