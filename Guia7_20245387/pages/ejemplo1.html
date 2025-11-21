@@ -31,18 +31,18 @@
                 </ul>
 
                 <div class="text-end">
-                    <button type="button" id="idBtnValidar" class="btn btn-success me-2">Validar Formulario</button>
                     <button type="button" id="idBtnDiv" class="btn btn-outline-light me-2">Nuevo registro</button>
                     <button type="button" id="idBtnButton" class="btn btn-warning">Ingresar</button>
                 </div>
             </div>
+        </div>
     </header>
 
     <div class="container">
         <div class="px-4 py-5 my-5 text-center">
             <h1 class="display-5 fw-bold">Creando formulario con DOM</h1>
             <form class="row g-0 text-center">
-                <div class="col-sm-12">
+                <div class="col-sm-12 mb-3">
                     <select class="form-select w-50 d-inline" id="idCmbElemento"
                         aria-label="Seleccione el elemento a crear">
                         <option value="" selected>Seleccione un elemento</option>
@@ -59,6 +59,9 @@
                     </select>
 
                     <button type="button" id="idBtnCrear" class="btn btn-primary d-inline">Crear elemento</button>
+                </div>
+                <div class="col-sm-12">
+                    <button type="button" id="idBtnValidar" class="btn btn-success">Validar Formulario</button>
                 </div>
             </form>
         </div>
